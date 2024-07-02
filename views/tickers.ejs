@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+     <nav>
+         <ul>
+             <li><a href="/">HODLINFO</a></li>
+
+            
+         </ul>
+         <div>
+            <ul>
+                <li> <label class="switch">
+                    <input type="checkbox" onchange="Change_back()" id="chek">
+                    <span class="slider"></span>
+                </label></li>
+            </ul>
+         </div>
+     </nav>
+
+     <div class="container">
+         <table>
+             <thead>
+                 <tr>
+                    <th>
+                        <h4><span class="pointer">#</span></h4>
+                    </th>
+                     <th>
+                         <h4><span class="pointer">Platform</span></h4>
+                     </th>
+                     <th>
+                         <h4><span class="pointer">Last Traded price</span></h4>
+                     </th>
+                     <th>   
+                         <h4><span class="pointer">Buy </span></h4>
+                     </th>
+                     <th>   
+                        <h4><span class="pointer">Sell </span></h4>
+                    </th>
+                     <th>
+                         <h4><span class="pointer">Volume</span></h4>
+                     </th>
+                     <th>
+                        <h4><span class="pointer">Base Unit</span></h4>
+                    </th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <% tickers.forEach(function(ticker,i) { %>
+                    
+                     <tr>
+                        <td><%=i+1%></td>
+                         <td><%= ticker.name %></td>
+
+                         <td>&#8377;<%= ticker.last.toFixed(2) %></td>
+
+                         <td>&#8377;<%= ticker.buy.toFixed(2) %></td>
+
+                         <td> &#8377;<%= ticker.sell.toFixed(2) %></td>
+
+                         <td> <%= ticker.volume %></td>
+
+                         <td> <%= ticker.base_unit %></td>
+
+                       
+                     </tr>
+                     
+                 <% }) %>
+             </tbody>
+         </table>
+     </div>
+    
+</body>
+<script>
+    function Change_back(){
+        let g=document.getElementById("chek");
+        let getbody=document.getElementsByTagName("body")[0];
+        if(g.checked){
+            getbody.style.backgroundColor="white";
+        }else{
+            getbody.style.backgroundColor="#191818";
+        }
+    }
+</script>
+</html>
